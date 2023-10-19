@@ -1,16 +1,22 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
-const Form = () => {
+const Form = ({ createColor }) => {
   const [color, setColor] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!color) {
+      toast.warning("Please provided value");
+      return;
+    }
+    createColor(color);
   };
 
   return (
     <section className="container">
+      <h4>color generator</h4>
       <form className="color-form" onSubmit={handleSubmit}>
-        <h4>color generator</h4>
         <input
           type="color"
           value={color}
