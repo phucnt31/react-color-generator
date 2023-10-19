@@ -1,7 +1,7 @@
 import React from "react";
 import { toast } from "react-toastify";
 
-const SingleColor = ({ color }) => {
+const SingleColor = ({ color, index }) => {
   const { weight, hex } = color;
 
   const saveToClipboard = async () => {
@@ -18,7 +18,7 @@ const SingleColor = ({ color }) => {
 
   return (
     <div
-      className="color"
+      className={index > 10 ? "color color-light" : "color"}
       style={{ background: `#${hex}` }}
       onClick={saveToClipboard}
     >
